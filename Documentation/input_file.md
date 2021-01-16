@@ -46,7 +46,7 @@ to highlight the changes we make as we implement new functions.
 
 ### **`&general` namelist variables**
 
-{:.text-red}
+{:.text-green}
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
 to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to the
@@ -78,7 +78,7 @@ trajectory file supplied on the command-line. (Default = 9999999)
 `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
 (default = 0):
-
+{:.text-purple}
 * 0: Don’t
 * 1: perform QH
 * 2: perform IE
