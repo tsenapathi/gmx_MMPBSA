@@ -467,7 +467,7 @@ has a strong effect on the cost of 3D-RISM calculations. (Default = 1e-5).
 ## Sample input files
 
 ```note
-You can refer to the [examples](../examples/README) to understand the input file in a practical way.
+You can refer to the [examples](../examples/) to understand the input file in a practical way.
 ```
 
 ### GB and PB
