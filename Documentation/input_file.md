@@ -64,6 +64,7 @@ trajectory file supplied on the command-line. (Default = 9999999)
 * 0: Don’t
 * 1: perform QH
 * 2: perform IE
+
 ```tip
  _Included Interaction entropy aproximation._
  ```
@@ -75,12 +76,12 @@ trajectory file supplied on the command-line. (Default = 9999999)
 Interaction Entropy, _e.g._: `entropy_seg = 25` means that the last quartile of the total number of frames
 (`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. (Default = 25) (Only
 if `entropy = 2`)
+
 ```note
 **New input variable added**
 ```
 `entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
 inconsistencies with defined internal temperature (298.15 K) when nmode is used (Default = 298.15)
-```
 
 ```note
 **New input variable added**
@@ -132,6 +133,7 @@ Force fields tested:
 * "oldff/leaprc.ff99SB"
 * "oldff/leaprc.ff99SBildn"
 * "leaprc.protein.ff14SB"
+
 ```tip
 _This notation format is the one used in tleap._
 ```
@@ -148,12 +150,14 @@ force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). F
 * "gmxMMPBSA/leaprc.GLYCAM_06h-1"    `*`(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
 * "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package.
   Compatible with amber 99SB)
+
 ```tip
 `*` We create a new folder (named _gmxMMPBSA_) in each one of the Amber's parameter folders (
 $AMBERHOME/dat/leap/[cmd, prep, lib, parm]/gmxMMPBSA). This way, we keep gmx_MMPBSA data separated from Amber's.
 
 _This notation format is the one used in tleap._
 ```
+
 ```note
 **New input variable added**
 ```
@@ -173,12 +177,13 @@ _This notation format is the one used in tleap._
 * 12: frcmod.ions234lm_hfe_tip3p
 
 ```note
-+ New input variable added
+**New input variable added**
 ```
 `reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
 
 * 0: Don't reuse. If there are temporary trajectory files, they will be deleted
 * 1: Reuse existing trajectory file
+
 ```warning
 Note that the trajectories files may not be generated correctly due to internal errors or interruptions. Please use 
 it with care.
