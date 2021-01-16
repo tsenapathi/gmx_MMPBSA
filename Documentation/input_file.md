@@ -31,22 +31,22 @@ However, “stare” and “sta” will match nothing.
 
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
-to the structure `*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
-the structure `*` (can generate inconsistencies). If a `*.gro` file was used for complex structure
+to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
+the structure`*` (can generate inconsistencies). If a `*.gro` file was used for complex structure
 (`-cs` flag) and not reference structure was provided, `gmx_MMPBSA` assume `assign_chainID = 1`. (Default = 0)
 
 `*` _The chain ID is assigned according to two criteria: **terminal amino acids** and **residue numbering**. If
 both criteria or residue numbering changes are present, we assign a new chain ID. If there are terminal amino acids but
 the numbering of the residue continues, we do not change the ID of the chain._
-
 ``` 
-
 
 `debug_printlevel` MMPBSA.py prints errors by raising exceptions, and not catching fatal errors. If debug_printlevel is
 set to 0, then detailed tracebacks (effectively the call stack showing exactly where in the program the error occurred)
 is suppressed, so only the error message is printed. If debug_printlevel is set to 1 or higher, all tracebacks are
-printed, which aids in debugging of issues. *Now `gmx_MMPBSA` shows the command line used to build AMBER topologies
-when `debug_printlevel > 1`*. Default: 0. (Advanced Option)
+printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
+```tip
+*Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel > 1`*. 
+```
 
 `startframe` The frame from which to begin extracting snapshots from the full, concatenated trajectory comprised of
 every trajectory file placed on the command-line. This is always the first frame read. (Default = 1)
@@ -54,9 +54,8 @@ every trajectory file placed on the command-line. This is always the first frame
 `endframe` The frame from which to stop extracting snapshots from the full, concatenated trajectory comprised of every
 trajectory file supplied on the command-line. (Default = 9999999)
 
-```diff
-@@ Input variable modified. Included Interaction entropy aproximation @@
-```            
+```note
+**Input variable modified. _Included Interaction entropy aproximation_**
 
 `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
@@ -65,37 +64,36 @@ trajectory file supplied on the command-line. (Default = 9999999)
 * 0: Don’t
 * 1: perform QH
 * 2: perform IE
+```            
+
 
 ```diff
-+ New input variable added
-```
+**New input variable added**
 
 `entropy_seg` Specify the representative segment (in %), starting from the `endframe`, for the calculation of the
 Interaction Entropy, _e.g._: `entropy_seg = 25` means that the last quartile of the total number of frames
-(`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. Default: 25 (Only
+(`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. (Default = 25) (Only
 if `entropy = 2`)
 
-```diff
-+ New input variable added
-```
+**New input variable added**
 
 `entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
 inconsistencies with defined internal temperature (298.15 K) when nmode is used (Default = 298.15)
-
-```diff
-+ New input variable added
 ```
+
+```note
+**New input variable added**
 
 `gmx_path` Define an additional path to search for GROMACS executables. This path takes precedence over the path defined
 in the PATH variable. In these path the following executables will be searched: `gmx`, `gmx_mpi`, `gmx_d`,
 `gmx_mpi_d` (Gromcas > 5.x.x), `make_ndx` and `trjconv` (GROMACS 4.x.x)
+```
 
 `interval` The offset from which to choose frames from each trajectory file. For example, an interval of 2 will pull
 every 2nd frame beginning at startframe and ending less than or equal to endframe. (Default = 1)
 
-```diff
-- Input variable deleted. All files are needed for plotting
-``` 
+```warning
+**Input variable deleted.** _All files are needed for plotting_
 
 ~~-`keep_files` The variable that specifies which temporary files are kept. All temporary files have the prefix
 `_GMXMMPBSA_` prepended to them (unless you change the prefix on the command-line—see subsection Subsection 34.3.2 for
@@ -103,6 +101,7 @@ details). Allowed values are 0, 1, and 2. 0: Keep no temporary files 1: Keep all
 files created by sander simulations 2: Keep all temporary files. Temporary files are only deleted if MMPBSA.py completes
 successfully (Default = 1) A verbose level of 1 is sufficient to use -rewrite-output and recreate the output file
 without rerunning any simulations.~~
+``` 
 
 `netcdf` Specifies whether or not to use NetCDF trajectories internally rather than writing temporary ASCII trajectory
 files. For very large trajectories, this could offer significant speedups, and requires less temporary space. However,
@@ -111,9 +110,8 @@ this option is incompatible with alanine scanning. Default value is 0.
 * 0: Do NOT use temporary NetCDF trajectories
 * 1: Use temporary NetCDF trajectories
 
-```diff
-+ New input variable added
-```
+```note
+**New input variable added**
 
 `PBRadii` PBRadii to build amber topology files (Default = 3):
 
@@ -121,10 +119,10 @@ this option is incompatible with alanine scanning. Default value is 0.
 * 2: mbondi, recommended when igb = 1
 * 3: mbondi2, recommended when igb = 2 or 5
 * 4: mbondi3, recommended when igb = 8
-
-```diff
-+ New input variable added
 ```
+
+```note
+**New input variable added**
 
 `protein_forcefield` Define the force field used to build Amber topology for proteins. Make sure this force field is the
 same as the one used in GROMACS (Default = "oldff/leaprc.ff99SB")
@@ -136,9 +134,7 @@ Force fields tested:
 * "oldff/leaprc.ff99SBildn"
 * "leaprc.protein.ff14SB"
 
-```diff
-+ New input variable added
-```
+**New input variable added**
 
 `ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
 force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). Force fields tested:
@@ -147,16 +143,14 @@ force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). F
 * "leaprc.gaff2"
 * "leaprc.GLYCAM_06j-1"    (Compatible with amber12SB and later)
 * "leaprc.GLYCAM_06EPb"    (Compatible with amber12SB and later)
-* "gmxMMPBSA/leaprc.GLYCAM_06h-1"    <sup>1</sup>(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
-* "gmxMMPBSA/leaprc.zaa99SB"    <sup>1</sup>Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package.
+* "gmxMMPBSA/leaprc.GLYCAM_06h-1"    `*`(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
+* "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package.
   Compatible with amber 99SB)
 
-<sup>1</sup> We create a new folder (named _gmxMMPBSA_) in each one of the Amber's parameter folders (
+`*` We create a new folder (named _gmxMMPBSA_) in each one of the Amber's parameter folders (
 $AMBERHOME/dat/leap/[cmd, prep, lib, parm]/gmxMMPBSA). This way, we keep gmx_MMPBSA data separated from Amber's.
 
-```diff
-+ New input variable added
-```
+**New input variable added**
 
 `ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
 
@@ -172,6 +166,19 @@ $AMBERHOME/dat/leap/[cmd, prep, lib, parm]/gmxMMPBSA). This way, we keep gmx_MMP
 * 10: frcmod.ions234lm_iod_tip3p
 * 11: frcmod.ions234lm_hfe_tip4pew
 * 12: frcmod.ions234lm_hfe_tip3p
+
+```
+
+
+```diff
++ New input variable added
+```
+
+
+```diff
++ New input variable added
+```
+
 
 ```diff
 + New input variable added
