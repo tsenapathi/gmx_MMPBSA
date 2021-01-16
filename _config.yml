@@ -1,1 +1,19 @@
-theme: jekyll-theme-cayman
+description: Test doc
+
+remote_theme: rundocs/jekyll-rtd-theme
+
+# debug:
+#   compress: true
+#   dist: false
+#   shortcodes: true
+
+readme_index:
+  with_frontmatter: true
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+
+exclude:
+  - category1
