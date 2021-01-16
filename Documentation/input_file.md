@@ -26,9 +26,8 @@ However, “stare” and “sta” will match nothing.
 
 ### **`&general` namelist variables**
 
-```diff
-+ New input variable added
-``` 
+```note
+**New input variable added**
 
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
@@ -39,6 +38,9 @@ the structure<sup>1</sup> (can generate inconsistencies). If a `*.gro` file was 
 _<sup>1</sup> The chain ID is assigned according to two criteria: **terminal amino acids** and **residue numbering**. If
 both criteria or residue numbering changes are present, we assign a new chain ID. If there are terminal amino acids but
 the numbering of the residue continues, we do not change the ID of the chain._
+
+``` 
+
 
 `debug_printlevel` MMPBSA.py prints errors by raising exceptions, and not catching fatal errors. If debug_printlevel is
 set to 0, then detailed tracebacks (effectively the call stack showing exactly where in the program the error occurred)
