@@ -78,9 +78,14 @@ trajectory file supplied on the command-line. (Default = 9999999)
 `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
 (default = 0):
+
 {:.text-purple}
 * 0: Don’t
+  
+{:.text-purple}
 * 1: perform QH
+
+{:.text-purple}
 * 2: perform IE
 
 ```tip
@@ -127,9 +132,16 @@ this option is incompatible with alanine scanning. Default value is 0.
 {:.text-green} 
 `PBRadii` PBRadii to build amber topology files (Default = 3):
 
+{:.text-green} 
 * 1: bondi, recommended when igb = 7
+
+{:.text-green} 
 * 2: mbondi, recommended when igb = 1
+
+{:.text-green} 
 * 3: mbondi2, recommended when igb = 2 or 5
+
+{:.text-green} 
 * 4: mbondi3, recommended when igb = 8
 
 {:.text-green} 
@@ -137,10 +149,19 @@ this option is incompatible with alanine scanning. Default value is 0.
 same as the one used in GROMACS (Default = "oldff/leaprc.ff99SB")
 Force fields tested:
 
+{:.text-green} 
 * "oldff/leaprc.ff99"
+
+{:.text-green} 
 * "oldff/leaprc.ff03"
+
+{:.text-green} 
 * "oldff/leaprc.ff99SB"
+
+{:.text-green} 
 * "oldff/leaprc.ff99SBildn"
+
+{:.text-green} 
 * "leaprc.protein.ff14SB"
 
 ```tip
@@ -151,11 +172,23 @@ _This notation format is the one used in tleap._
 `ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
 force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). Force fields tested:
 
+
+{:.text-green} 
 * "leaprc.gaff"
+
+{:.text-green} 
 * "leaprc.gaff2"
+
+{:.text-green} 
 * "leaprc.GLYCAM_06j-1"    (Compatible with amber12SB and later)
+
+{:.text-green} 
 * "leaprc.GLYCAM_06EPb"    (Compatible with amber12SB and later)
+
+{:.text-green} 
 * "gmxMMPBSA/leaprc.GLYCAM_06h-1"    `*`(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
+
+{:.text-green} 
 * "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package. Compatible
   with amber 99SB)
 
@@ -169,23 +202,49 @@ _This notation format is the one used in tleap._
 {:.text-green} 
 `ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
 
+{:.text-green} 
 * 1: frcmod.ions234lm_126_tip3p
+
+{:.text-green} 
 * 2: frcmod.ions234lm_iod_tip4pew
+
+{:.text-green} 
 * 3: frcmod.ions234lm_iod_spce
+
+{:.text-green} 
 * 4: frcmod.ions234lm_hfe_spce
+
+{:.text-green} 
 * 5: frcmod.ions234lm_126_tip4pew
+
+{:.text-green} 
 * 6: frcmod.ions234lm_126_spce
+
+{:.text-green} 
 * 7: frcmod.ions234lm_1264_tip4pew
+
+{:.text-green} 
 * 8: frcmod.ions234lm_1264_tip3p
+
+{:.text-green} 
 * 9: frcmod.ions234lm_1264_spce
+
+{:.text-green} 
 * 10: frcmod.ions234lm_iod_tip3p
+
+{:.text-green} 
 * 11: frcmod.ions234lm_hfe_tip4pew
+
+{:.text-green} 
 * 12: frcmod.ions234lm_hfe_tip3p
 
 {:.text-green} 
 `reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
 
+{:.text-green} 
 * 0: Don't reuse. If there are temporary trajectory files, they will be deleted
+
+{:.text-green} 
 * 1: Reuse existing trajectory file
 
 ```warning
@@ -196,7 +255,10 @@ it with care.
 {:.text-green} 
 `solvated_trajectory` Define if it is necessary to build a clean trajectory with no water and ions (Default = 1)
 
+{:.text-green} 
 * 0: Don’t
+
+{:.text-green} 
 * 1: Build clean trajectory
 
 {:.text-red} 
