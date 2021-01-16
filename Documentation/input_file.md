@@ -65,7 +65,7 @@ is suppressed, so only the error message is printed. If debug_printlevel is set 
 printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
 
 ```tip
-_Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel >= 1`._ 
+_Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel = 1 or higher`._ 
 ```
 
 `startframe` The frame from which to begin extracting snapshots from the full, concatenated trajectory comprised of
