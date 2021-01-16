@@ -24,7 +24,7 @@ that namelist. Variables require at least 4 characters to be matched unless that
 characters (in which case the whole variable name is required). For example, “star” in &general will match “startframe”.
 However, “stare” and “sta” will match nothing.
 
-**&general namelist variables**
+### **`&general` namelist variables**
 
 ```diff
 + New input variable added
@@ -212,7 +212,7 @@ Default = 1):
 * 1: print all complex, receptor, and ligand terms
 * 2: also print bonded terms if one trajectory is used
 
-**&gb namelist variables**
+### **`&gb` namelist variables**
 
 `ifqnt` Specifies whether a part of the system is treated with quantum mechanics. This functionality requires sander igb
 Generalized Born method to use (seeSection 4). Allowed values are 1, 2, 5, 7 and 8. (Default = 5) All models are now
@@ -258,7 +258,7 @@ determining the molecular surface (only applicable when molsurf is set to 1). De
 `msoffset` Offset to apply to the individual atomic radii in the system when calculating the molsurf surface. See the
 description of the molsurf action command in [cpptraj](https://ambermd.org/doc12/Amber20.pdf#chapter.32). Default is 0.
 
-**&pb namelist variables**
+### **`&pb` namelist variables**
 
 `inp` Option to select different methods to compute non-polar solvation free energy (Default = 2).
 
@@ -313,7 +313,7 @@ found [here](https://ambermd.org/doc12/Amber20.pdf#chapter.6). Please also note 
 over time. For a detailed discussion of all related options on the quality of the MM/PB(GB)SA calculations, please check
 this [publication](https://onlinelibrary.wiley.com/doi/10.1002/jcc.24467).
 
-**&alanine_scanning namelist variables**
+### **`&alanine_scanning` namelist variables**
 
 `mutant_only` Option to perform specified calculations only for the mutants. Allowed values are 0: Do mutant and
 original or 1: Do mutant only (Default = 0)
@@ -330,7 +330,7 @@ lig in any capitalization (Default = receptor or REC)
 `mutant_res` Define the specific residue that is going to be mutated. Use the following format CHAIN:RESNUM (eg: 'A:
 350'). Please, make sure that your selection is correct and based on GROMACS numbering in processed files.
 
-**&nmode namelist variables**
+### **`&nmode` namelist variables**
 
 `dielc` Distance-dependent dielectric constant (Default = 1.0)
 
@@ -356,7 +356,7 @@ is 0 above. (Default = 0.0)
   “trajectory” from which snapshots will be chosen for nmode calculations will be the collection of snapshots upon which
   the other calculations were performed.
 
-**&decomp namelist variables**
+### **`&decomp` namelist variables**
 
 `csv_format` Print the decomposition output in a Comma-Separated-Variable (CSV) file. CSV files open natively in most
 spreadsheets. If set to 1, this variable will cause the data to be written out in a CSV file, and standard error of the
@@ -404,7 +404,15 @@ file and the corresponding residues in either the ligand and/or receptor topolog
 + the ligand.
 ```
 
-**&rism namelist variables***
+### **`&rism` namelist variables**
+```warning
+3D-RISM calculations are performed with the rism3d.snglpnt program built with AmberTools, written by Tyler Luchko. It
+  is the most expensive, yet most statistical mechanically rigorous solvation model available in MMPBSA.py.
+  See [Chapter 7](https://ambermd.org/doc12/Amber20.pdf#chapter.7) for a more thorough description of options and
+  theory. A list of references can be found there, too. One advantage of 3D-RISM is that an arbitrary solvent can be
+  chosen; you just need to change the xvvfile specified on the command line (
+  see [34.3.2](https://ambermd.org/doc12/Amber20.pdf#subsection.34.3.2)).
+```
 
 `buffer` Minimum distance between solute and edge of solvation box. Specify this with grdspc below. Mutually exclusive
 with ng and solvbox. Set buffer < 0 if you wish to use ng and solvbox. (Default = 14 Å)
@@ -447,12 +455,7 @@ use the -rewrite-output flag to obtain a different printout after-the-fact.
 `tolerance` Upper bound of the precision requirement used to determine convergence of the self-consistent solution. This
 has a strong effect on the cost of 3D-RISM calculations. (Default = 1e-5).
 
-* 3D-RISM calculations are performed with the rism3d.snglpnt program built with AmberTools, written by Tyler Luchko. It
-  is the most expensive, yet most statistical mechanically rigorous solvation model available in MMPBSA.py.
-  See [Chapter 7](https://ambermd.org/doc12/Amber20.pdf#chapter.7) for a more thorough description of options and
-  theory. A list of references can be found there, too. One advantage of 3D-RISM is that an arbitrary solvent can be
-  chosen; you just need to change the xvvfile specified on the command line (
-  see [34.3.2](https://ambermd.org/doc12/Amber20.pdf#subsection.34.3.2)).
+
   
 
 ## Sample input files
