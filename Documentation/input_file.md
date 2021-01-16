@@ -197,7 +197,7 @@ it with care.
 * 0: Don’t
 * 1: Build clean trajectory
 
-```warnning
+```warning
 **Input variable deleted. _Always must be defined to get GROMACS_**
 
 ~~-`search_path` Advanced option. By default, MMPBSA.py will only search for executables in $AMBERHOME/bin . To enable
