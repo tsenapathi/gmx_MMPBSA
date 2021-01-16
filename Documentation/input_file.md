@@ -29,7 +29,7 @@ However, “stare” and “sta” will match nothing.
 ```note
 **New input variable added**
 ``` 
-`assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
+#### `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
 to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
 the structure`*` (can generate inconsistencies). If a `*.gro` file was used for complex structure
@@ -40,7 +40,7 @@ both criteria or residue numbering changes are present, we assign a new chain ID
 the numbering of the residue continues, we do not change the ID of the chain._
 ```
 
-`debug_printlevel` MMPBSA.py prints errors by raising exceptions, and not catching fatal errors. If debug_printlevel is
+#### `debug_printlevel` MMPBSA.py prints errors by raising exceptions, and not catching fatal errors. If debug_printlevel is
 set to 0, then detailed tracebacks (effectively the call stack showing exactly where in the program the error occurred)
 is suppressed, so only the error message is printed. If debug_printlevel is set to 1 or higher, all tracebacks are
 printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
@@ -48,16 +48,16 @@ printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
 _Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel \> 1`._ 
 ```
 
-`startframe` The frame from which to begin extracting snapshots from the full, concatenated trajectory comprised of
+#### `startframe` The frame from which to begin extracting snapshots from the full, concatenated trajectory comprised of
 every trajectory file placed on the command-line. This is always the first frame read. (Default = 1)
 
-`endframe` The frame from which to stop extracting snapshots from the full, concatenated trajectory comprised of every
+#### `endframe` The frame from which to stop extracting snapshots from the full, concatenated trajectory comprised of every
 trajectory file supplied on the command-line. (Default = 9999999)
 
 ```note
 **Input variable modified.**
 ```
-`entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
+#### `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
 (default = 0):
 
@@ -72,7 +72,7 @@ trajectory file supplied on the command-line. (Default = 9999999)
 ```note
 **New input variable added**
 ```
-`entropy_seg` Specify the representative segment (in %), starting from the `endframe`, for the calculation of the
+#### `entropy_seg` Specify the representative segment (in %), starting from the `endframe`, for the calculation of the
 Interaction Entropy, _e.g._: `entropy_seg = 25` means that the last quartile of the total number of frames
 (`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. (Default = 25) (Only
 if `entropy = 2`)
@@ -80,17 +80,17 @@ if `entropy = 2`)
 ```note
 **New input variable added**
 ```
-`entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
+#### `entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
 inconsistencies with defined internal temperature (298.15 K) when nmode is used (Default = 298.15)
 
 ```note
 **New input variable added**
 ```
-`gmx_path` Define an additional path to search for GROMACS executables. This path takes precedence over the path defined
+#### `gmx_path` Define an additional path to search for GROMACS executables. This path takes precedence over the path defined
 in the PATH variable. In these path the following executables will be searched: `gmx`, `gmx_mpi`, `gmx_d`,
 `gmx_mpi_d` (Gromcas > 5.x.x), `make_ndx` and `trjconv` (GROMACS 4.x.x)
 
-`interval` The offset from which to choose frames from each trajectory file. For example, an interval of 2 will pull
+#### `interval` The offset from which to choose frames from each trajectory file. For example, an interval of 2 will pull
 every 2nd frame beginning at startframe and ending less than or equal to endframe. (Default = 1)
 
 ```warning
@@ -104,7 +104,7 @@ successfully (Default = 1) A verbose level of 1 is sufficient to use -rewrite-ou
 without rerunning any simulations.~~
 ``` 
 
-`netcdf` Specifies whether or not to use NetCDF trajectories internally rather than writing temporary ASCII trajectory
+#### `netcdf` Specifies whether or not to use NetCDF trajectories internally rather than writing temporary ASCII trajectory
 files. For very large trajectories, this could offer significant speedups, and requires less temporary space. However,
 this option is incompatible with alanine scanning. Default value is 0.
 
@@ -114,7 +114,7 @@ this option is incompatible with alanine scanning. Default value is 0.
 ```note
 **New input variable added**
 ```
-`PBRadii` PBRadii to build amber topology files (Default = 3):
+#### `PBRadii` PBRadii to build amber topology files (Default = 3):
 
 * 1: bondi, recommended when igb = 7
 * 2: mbondi, recommended when igb = 1
@@ -124,7 +124,7 @@ this option is incompatible with alanine scanning. Default value is 0.
 ```note
 **New input variable added**
 ```
-`protein_forcefield` Define the force field used to build Amber topology for proteins. Make sure this force field is the
+#### `protein_forcefield` Define the force field used to build Amber topology for proteins. Make sure this force field is the
 same as the one used in GROMACS (Default = "oldff/leaprc.ff99SB")
 Force fields tested:
 
@@ -140,7 +140,7 @@ _This notation format is the one used in tleap._
 ```note
 **New input variable added**
 ```
-`ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
+#### `ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
 force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). Force fields tested:
 
 * "leaprc.gaff"
@@ -161,7 +161,7 @@ _This notation format is the one used in tleap._
 ```note
 **New input variable added**
 ```
-`ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
+#### `ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
 
 * 1: frcmod.ions234lm_126_tip3p
 * 2: frcmod.ions234lm_iod_tip4pew
@@ -179,7 +179,7 @@ _This notation format is the one used in tleap._
 ```note
 **New input variable added**
 ```
-`reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
+#### `reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
 
 * 0: Don't reuse. If there are temporary trajectory files, they will be deleted
 * 1: Reuse existing trajectory file
@@ -192,7 +192,7 @@ it with care.
 ```note
 **New input variable added**
 ```
-`solvated_trajectory` Define if it is necessary to build a clean trajectory with no water and ions (Default = 1)
+#### `solvated_trajectory` Define if it is necessary to build a clean trajectory with no water and ions (Default = 1)
 
 * 0: Don’t
 * 1: Build clean trajectory
@@ -206,12 +206,12 @@ do not search through the PATH ). This is particularly useful if you are using a
 AMBERHOME .~~
 ```
 
-`use_sander` use sander for energy calculations, even when mmpbsa_py_energy will suffice (Default = 0)
+#### `use_sander` use sander for energy calculations, even when mmpbsa_py_energy will suffice (Default = 0)
 
 * 0: Use mmpbsa_py_energy when possible
 * 1: Always use sander
 
-`verbose` The variable that specifies how much output is printed in the output file. There are three allowed values (
+#### `verbose` The variable that specifies how much output is printed in the output file. There are three allowed values (
 Default = 1):
 
 * 0: print difference terms
