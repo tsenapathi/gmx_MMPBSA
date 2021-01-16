@@ -65,7 +65,7 @@ is suppressed, so only the error message is printed. If debug_printlevel is set 
 printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
 
 ```tip
-_Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel \> 1`._ 
+_Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel &gt;derp> 1`._ 
 ```
 
 `startframe` The frame from which to begin extracting snapshots from the full, concatenated trajectory comprised of
@@ -465,9 +465,9 @@ Angstroms necessary to select the residues from both the receptor and the ligand
 print_res = “1; 3-10; 15; 100”. Both of these will print residues 1, 3 through 10, 15, and 100 from the complex topology
 file and the corresponding residues in either the ligand and/or receptor topology files.
 
-```tip
+```Note
 {:.text-red} 
-Please note: Using idecomp=3 or 4 (pairwise) with a very large number of printed residues and a large number of 
+Using idecomp=3 or 4 (pairwise) with a very large number of printed residues and a large number of 
 frames can quickly create very, very large temporary mdout files. Large print selections also demand a large amount 
 of memory to parse the mdout files and write decomposition output file (~500 MB for just 250 residues, since that’s 
 62500 pairs!) It is not unusual for the output file to take a significant amount of time to print if you have a lot of
