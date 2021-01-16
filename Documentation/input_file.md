@@ -387,15 +387,15 @@ original or 1: Do mutant only (Default = 0)
 Note that all calculation details are controlled in the other namelists, though for alanine scanning to be performed,
 the namelist must be included (blank if desired)
 
-```diff
-+Two options added to ease the alanine_scanning calculations
-```
+
 {:.text-green} 
 `mutant` Define whether the mutation will be perform in receptor or ligand. Allowed values are: receptor, rec, ligand or
 lig in any capitalization (Default = receptor or REC)
 
+{:.text-green}
 `mutant_res` Define the specific residue that is going to be mutated. Use the following format CHAIN:RESNUM (eg: 'A:
 350'). Please, make sure that your selection is correct and based on GROMACS numbering in processed files.
+
 ```tip
 These options allow gmx_MMPBSA to do the mutation. This way the user does not have to provide the mutant topology
 ```
