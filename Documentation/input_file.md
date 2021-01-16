@@ -466,6 +466,11 @@ has a strong effect on the cost of 3D-RISM calculations. (Default = 1e-5).
 
 ## Sample input files
 
+```note
+You can refer to the [examples](./examples/README) to understand the input file in a practical way.
+```
+
+### GB and PB
 ```
 Sample input file for GB and PB calculation
 &general
@@ -478,7 +483,10 @@ igb=5, saltcon=0.150,
 &pb
 istrng=0.15, fillratio=4.0
 /
---------------------------------------------------------
+```
+
+### Alanine scanning
+```
 Sample input file for Alanine scanning
 &general
 startframe=5, endframe=21, verbose=2, interval=1,
@@ -493,7 +501,9 @@ igb=8, saltcon=0.150, intdiel=10
 mutant='receptor'
 mutant_res='B:12'
 /
---------------------------------------------------------
+```
+### Entropy
+```
 Sample input file for entropy calculations
 &general
 #
@@ -511,7 +521,9 @@ igb=2, saltcon=0.150,
 #maxcyc=50000, drms=0.0001,
 #/
 /
---------------------------------------------------------
+```
+### Decomposition analysis
+```
 Sample input file with decomposition analysis
 #make sure to include at least one residue from both the receptor
 #and ligand in the print_res mask of the &decomp section.
@@ -529,7 +541,9 @@ print_res="within 4"
 #in the output file
 #print_res="40-41,44,47,78,81-82,85,88,115,118,122,215,218-220,232,241"
 /
---------------------------------------------------------
+```
+### QM/MMGBSA
+```
 Sample input file for QM/MMGBSA
 &general
 startframe=5, endframe=100, interval=5,
@@ -538,7 +552,9 @@ startframe=5, endframe=100, interval=5,
 igb=5, saltcon=0.100, ifqnt=1, qmcharge_com=0,
 qm_residues="100-105, 200", qm_theory="PM3"
 /
---------------------------------------------------------
+```
+### MM/3D-RISM
+```
 Sample input file for MM/3D-RISM
 &general
 startframe=20, endframe=100, interval=5,
@@ -546,7 +562,9 @@ startframe=20, endframe=100, interval=5,
 &rism
 polardecomp=1, thermo="gf"
 /
---------------------------------------------------------
+```
+### MMPBSA with membrane proteins
+```
 Sample input file for MMPBSA with membrane proteins
 &general
 startframe=1, endframe=100, interval=1, 
@@ -562,8 +580,10 @@ maxarcdot=15000
 /
 ```
 
-A few important notes about input files. Comments are allowed by placing a # at the beginning of the line (whites- pace
+```note
+Comments are allowed by placing a # at the beginning of the line (whites- pace
 is ignored). Variable initialization may span multiple lines. In-line comments (_i.e._, putting a # for a comment after
 a variable is initialized in the same line) is not allowed and will result in an input error. Variable declarations must
 be comma-delimited, though all whitespace is ignored. Finally, all lines between namelists are ignored, so comments can
 be added before each namelist without using #.
+```
