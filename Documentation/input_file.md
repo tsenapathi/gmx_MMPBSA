@@ -421,7 +421,7 @@ These options allow gmx_MMPBSA to do the mutation. This way the user does not ha
 if `nmode_igb`
 is 0 above. (Default = 0.0)
 
-`nmstartframe` ∗ Frame number to begin performing nmode calculations on (Default = 1)
+`nmstartframe``∗` Frame number to begin performing nmode calculations on (Default = 1)
 
 `*` _These variables will choose a subset of the frames chosen from the variables in the &general namelist. Thus, the
   “trajectory” from which snapshots will be chosen for nmode calculations will be the collection of snapshots upon which
