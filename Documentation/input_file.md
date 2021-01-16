@@ -434,15 +434,18 @@ spreadsheets. If set to 1, this variable will cause the data to be written out i
 mean will be calculated and included for all data. If set to 0, the standard, ASCII format will be used for the output
 file. Default is 1 (CSV-formatted output file)
 
-`dec_verbose` Set the level of output to print in the decomp_output file.
+`dec_verbose` Set the level of output to print in the decomp_output file. (Default = 0)
 
 * 0: DELTA energy, total contribution only
 * 1: DELTA energy, total, sidechain, and backbone contributions
 * 2: Complex, Receptor, Ligand, and DELTA energies, total contribution only
 * 3: Complex, Receptor, Ligand, and DELTA energies, total, sidechain, and backbone contributions
 
-Note: If the values 0 or 2 are chosen, only the Total contributions are required, so only those will be printed to the
-mdout files to cut down on the size of the mdout files and the time required to parse them. Default = 0
+```note
+If the values 0 or 2 are chosen, only the Total contributions are required, so only those will be printed to the
+mdout files to cut down on the size of the mdout files and the time required to parse them.
+```
+Note: 
 
 `idecomp` Energy decomposition scheme to use:
 
@@ -451,7 +454,9 @@ mdout files to cut down on the size of the mdout files and the time required to 
 * 3: Pairwise decomp with 1-4 terms added to internal potential terms
 * 4: Pairwise decomp with 1-4 EEL added to EEL and 1-4 VDW added to VDW potential terms
 
+```warning
 (No default. This must be specified!) This functionality requires sander.
+```
 
 `print_res` Select residues from the complex to print. Default is print "within 6". This variable also accepts a
 sequence of individual residues and/or ranges. The different fields must be either comma- or semicolon-delimited. For
