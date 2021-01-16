@@ -69,7 +69,7 @@ Add this folder (*/amber20/miniconda/bin) to PATH:
 
 *This option is more permanent and is recommended if you don't want to activate and deactivate the conda environment*
 
-```note
+```tip
 Make sure to update **user** and **path_to_amber_install** in the PATH variable
 ```
 

@@ -5,6 +5,7 @@ sort: 5
 # The input file
 
 ## Description
+
 As `gmx_MMPBSA` is based on [MMPBSA.py](https://pubs.acs.org/doi/10.1021/ct300418h), it uses an input file containing
 all the specification for the MM/PB(GB)SA calculation. The input file is designed to be as syntactically similar to
 other programs in Amber as possible. The input file has the same namelist structure as both sander and pmemd. The
@@ -24,16 +25,34 @@ that namelist. Variables require at least 4 characters to be matched unless that
 characters (in which case the whole variable name is required). For example, “star” in &general will match “startframe”.
 However, “stare” and “sta” will match nothing.
 
+```note
+We use the following notation to highlight the changes.
+
+{:.text-green} 
+- **Input variable added**
+
+{:.text-red} 
+- **Input variable deleted**
+
+
+{:.text-purple} 
+- **Input variable modified.**
+
+ 
+This notation allows a clear understanding of the differences for users familiar with MMPBSA.py. It also allows us 
+to highlight the changes we make as we implement new functions.
+
+``` 
+
 ### **`&general` namelist variables**
 
-```note
-**New input variable added**
-``` 
+{:.text-red}
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
-to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
-the structure`*` (can generate inconsistencies). If a `*.gro` file was used for complex structure
+to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to the
+structure`*` (can generate inconsistencies). If a `*.gro` file was used for complex structure
 (`-cs` flag) and not reference structure was provided, `gmx_MMPBSA` assume `assign_chainID = 1`. (Default = 0)
+
 ```tip
 `*` _The chain ID is assigned according to two criteria: **terminal amino acids** and **residue numbering**. If
 both criteria or residue numbering changes are present, we assign a new chain ID. If there are terminal amino acids but
@@ -44,6 +63,7 @@ the numbering of the residue continues, we do not change the ID of the chain._
 set to 0, then detailed tracebacks (effectively the call stack showing exactly where in the program the error occurred)
 is suppressed, so only the error message is printed. If debug_printlevel is set to 1 or higher, all tracebacks are
 printed, which aids in debugging of issues. (Default = 0) (Advanced Option)
+
 ```tip
 _Now `gmx_MMPBSA` shows the command-line used to build AMBER topologies when `debug_printlevel \> 1`._ 
 ```
@@ -54,9 +74,7 @@ every trajectory file placed on the command-line. This is always the first frame
 `endframe` The frame from which to stop extracting snapshots from the full, concatenated trajectory comprised of every
 trajectory file supplied on the command-line. (Default = 9999999)
 
-```note
-**Input variable modified.**
-```
+{:.text-purple} 
 `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
 (default = 0):
@@ -69,23 +87,17 @@ trajectory file supplied on the command-line. (Default = 9999999)
  _Included Interaction entropy aproximation._
  ```
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `entropy_seg` Specify the representative segment (in %), starting from the `endframe`, for the calculation of the
 Interaction Entropy, _e.g._: `entropy_seg = 25` means that the last quartile of the total number of frames
 (`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. (Default = 25) (Only
 if `entropy = 2`)
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
 inconsistencies with defined internal temperature (298.15 K) when nmode is used (Default = 298.15)
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `gmx_path` Define an additional path to search for GROMACS executables. This path takes precedence over the path defined
 in the PATH variable. In these path the following executables will be searched: `gmx`, `gmx_mpi`, `gmx_d`,
 `gmx_mpi_d` (Gromcas > 5.x.x), `make_ndx` and `trjconv` (GROMACS 4.x.x)
@@ -93,15 +105,16 @@ in the PATH variable. In these path the following executables will be searched: 
 `interval` The offset from which to choose frames from each trajectory file. For example, an interval of 2 will pull
 every 2nd frame beginning at startframe and ending less than or equal to endframe. (Default = 1)
 
-```warning
-**Input variable deleted.** _All files are needed for plotting_
 
+{:.text-red} 
 ~~-`keep_files` The variable that specifies which temporary files are kept. All temporary files have the prefix
 `_GMXMMPBSA_` prepended to them (unless you change the prefix on the command-line—see subsection Subsection 34.3.2 for
 details). Allowed values are 0, 1, and 2. 0: Keep no temporary files 1: Keep all generated trajectory files and mdout
 files created by sander simulations 2: Keep all temporary files. Temporary files are only deleted if MMPBSA.py completes
 successfully (Default = 1) A verbose level of 1 is sufficient to use -rewrite-output and recreate the output file
 without rerunning any simulations.~~
+```warning
+_All files are needed for plotting_
 ``` 
 
 `netcdf` Specifies whether or not to use NetCDF trajectories internally rather than writing temporary ASCII trajectory
@@ -111,9 +124,7 @@ this option is incompatible with alanine scanning. Default value is 0.
 * 0: Do NOT use temporary NetCDF trajectories
 * 1: Use temporary NetCDF trajectories
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `PBRadii` PBRadii to build amber topology files (Default = 3):
 
 * 1: bondi, recommended when igb = 7
@@ -121,9 +132,7 @@ this option is incompatible with alanine scanning. Default value is 0.
 * 3: mbondi2, recommended when igb = 2 or 5
 * 4: mbondi3, recommended when igb = 8
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `protein_forcefield` Define the force field used to build Amber topology for proteins. Make sure this force field is the
 same as the one used in GROMACS (Default = "oldff/leaprc.ff99SB")
 Force fields tested:
@@ -137,9 +146,8 @@ Force fields tested:
 ```tip
 _This notation format is the one used in tleap._
 ```
-```note
-**New input variable added**
-```
+
+{:.text-green} 
 `ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
 force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). Force fields tested:
 
@@ -148,8 +156,8 @@ force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). F
 * "leaprc.GLYCAM_06j-1"    (Compatible with amber12SB and later)
 * "leaprc.GLYCAM_06EPb"    (Compatible with amber12SB and later)
 * "gmxMMPBSA/leaprc.GLYCAM_06h-1"    `*`(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
-* "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package.
-  Compatible with amber 99SB)
+* "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package. Compatible
+  with amber 99SB)
 
 ```tip
 `*` We create a new folder (named _gmxMMPBSA_) in each one of the Amber's parameter folders (
@@ -158,9 +166,7 @@ $AMBERHOME/dat/leap/[cmd, prep, lib, parm]/gmxMMPBSA). This way, we keep gmx_MMP
 _This notation format is the one used in tleap._
 ```
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
 
 * 1: frcmod.ions234lm_126_tip3p
@@ -176,9 +182,7 @@ _This notation format is the one used in tleap._
 * 11: frcmod.ions234lm_hfe_tip4pew
 * 12: frcmod.ions234lm_hfe_tip3p
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
 
 * 0: Don't reuse. If there are temporary trajectory files, they will be deleted
@@ -189,21 +193,19 @@ Note that the trajectories files may not be generated correctly due to internal 
 it with care.
 ```
 
-```note
-**New input variable added**
-```
+{:.text-green} 
 `solvated_trajectory` Define if it is necessary to build a clean trajectory with no water and ions (Default = 1)
 
 * 0: Don’t
 * 1: Build clean trajectory
 
-```warning
-**Input variable deleted. _Always must be defined to get GROMACS_**
-
+{:.text-red} 
 ~~-`search_path` Advanced option. By default, MMPBSA.py will only search for executables in $AMBERHOME/bin . To enable
 it to search for binaries in your full PATH if they can’t be found in $AMBERHOME/bin , set search_path to 1. Default 0 (
 do not search through the PATH ). This is particularly useful if you are using an older version of sander that is not in
 AMBERHOME .~~
+```warning
+_Always must be defined to get GROMACS_
 ```
 
 `use_sander` use sander for energy calculations, even when mmpbsa_py_energy will suffice (Default = 0)
@@ -231,10 +233,7 @@ available with both mmpbsa_py_energy and sander.(Default = 0)
 ignored. All residues treated with quantum mechanics in the complex must be treated with quantum mechanics in the
 receptor or ligand to obtain meaningful results.
 
-```diff
-+ Input variable added.
-```
-
+{:.text-green} 
 `intdiel` Define Internal dielectric constant without use external *.mdin file (Default = 1.0)
 
 `qm_theory` Which semi-empirical Hamiltonian should be used for the quantum calculation. No default, this must be
@@ -329,12 +328,16 @@ the namelist must be included (blank if desired)
 ```diff
 +Two options added to ease the alanine_scanning calculations
 ```
-
+{:.text-green} 
 `mutant` Define whether the mutation will be perform in receptor or ligand. Allowed values are: receptor, rec, ligand or
 lig in any capitalization (Default = receptor or REC)
 
 `mutant_res` Define the specific residue that is going to be mutated. Use the following format CHAIN:RESNUM (eg: 'A:
 350'). Please, make sure that your selection is correct and based on GROMACS numbering in processed files.
+```tip
+These options allow gmx_MMPBSA to do the mutation. This way the user does not have to provide the mutant topology
+```
+
 
 ### **`&nmode` namelist variables**
 
@@ -395,29 +398,30 @@ Angstroms necessary to select the residues from both the receptor and the ligand
 print_res = “1; 3-10; 15; 100”. Both of these will print residues 1, 3 through 10, 15, and 100 from the complex topology
 file and the corresponding residues in either the ligand and/or receptor topology files.
 
-```diff
-- *Please note: Using idecomp=3 or 4 (pairwise) with a very large number of printed residues and a
--  large number of frames can quickly create very, very large temporary mdout files. Large print 
--  selections also demand a large amount of memory to parse the mdout files and write 
--  decomposition output file (~500 MB for just 250 residues, since that’s 62500 pairs!) It is not
--  unusual for the output file to take a significant amount of time to print if you have a lot of
--  data. This is most applicable to pairwise decomp, since the amount of data scales as O(N 2 ).
+```tip
+{:.text-red} 
+Please note: Using idecomp=3 or 4 (pairwise) with a very large number of printed residues and a large number of 
+frames can quickly create very, very large temporary mdout files. Large print selections also demand a large amount 
+of memory to parse the mdout files and write decomposition output file (~500 MB for just 250 residues, since that’s 
+62500 pairs!) It is not unusual for the output file to take a significant amount of time to print if you have a lot of
+data. This is most applicable to pairwise decomp, since the amount of data scales as O(N 2 ).
 
-+ Based on the above, we decided to add a new option that limits the selection of the residues 
-+ that will be printed by default. We defined a selection method with the following structure:
-+ print_res = "within 6" where _within_ corresponds to the keyword and _6_ to the maximum 
-+ distance criterion in Angstroms necessary to select the residues from both the receptor and
-+ the ligand.
+{:.text-green} 
+Based on the above, we decided to add a new option that limits the selection of the residues that will be printed by 
+default. The new option (within 6) considerably reduces the number of residues to be printed reducing the 
+computational cost. Additionally, it selects the interaction interface residues (according to the selected value) 
+automatically, without the user needing to define them explicitly.
 ```
 
 ### **`&rism` namelist variables**
+
 ```warning
-3D-RISM calculations are performed with the rism3d.snglpnt program built with AmberTools, written by Tyler Luchko. It
-  is the most expensive, yet most statistical mechanically rigorous solvation model available in MMPBSA.py.
-  See [Chapter 7](https://ambermd.org/doc12/Amber20.pdf#chapter.7) for a more thorough description of options and
-  theory. A list of references can be found there, too. One advantage of 3D-RISM is that an arbitrary solvent can be
-  chosen; you just need to change the xvvfile specified on the command line (
-  see [34.3.2](https://ambermd.org/doc12/Amber20.pdf#subsection.34.3.2)).
+3D-RISM calculations are performed with the rism3d.snglpnt program built with AmberTools, written by Tyler Luchko. 
+It is the most expensive, yet most statistical mechanically rigorous solvation model available in MMPBSA.py. See 
+[Chapter 7](https://ambermd.org/doc12/Amber20.pdf#chapter.7) for a more thorough description of options and theory. 
+A list of references can be found there, too. One advantage of 3D-RISM is that an arbitrary solvent can be chosen; 
+you just need to change the xvvfile specified on the command line 
+(see [34.3.2](https://ambermd.org/doc12/Amber20.pdf#subsection.34.3.2)).
 ```
 
 `buffer` Minimum distance between solute and edge of solvation box. Specify this with grdspc below. Mutually exclusive
@@ -461,9 +465,6 @@ use the -rewrite-output flag to obtain a different printout after-the-fact.
 `tolerance` Upper bound of the precision requirement used to determine convergence of the self-consistent solution. This
 has a strong effect on the cost of 3D-RISM calculations. (Default = 1e-5).
 
-
-  
-
 ## Sample input files
 
 ```note
@@ -471,6 +472,7 @@ You can refer to the [examples](../examples/) to understand the input file in a 
 ```
 
 ### GB and PB
+
 ```
 Sample input file for GB and PB calculation
 &general
@@ -486,6 +488,7 @@ istrng=0.15, fillratio=4.0
 ```
 
 ### Alanine scanning
+
 ```
 Sample input file for Alanine scanning
 &general
@@ -502,7 +505,9 @@ mutant='receptor'
 mutant_res='B:12'
 /
 ```
+
 ### Entropy
+
 ```
 Sample input file for entropy calculations
 &general
@@ -522,7 +527,9 @@ igb=2, saltcon=0.150,
 #/
 /
 ```
+
 ### Decomposition analysis
+
 ```
 Sample input file with decomposition analysis
 #make sure to include at least one residue from both the receptor
@@ -542,7 +549,9 @@ print_res="within 4"
 #print_res="40-41,44,47,78,81-82,85,88,115,118,122,215,218-220,232,241"
 /
 ```
+
 ### QM/MMGBSA
+
 ```
 Sample input file for QM/MMGBSA
 &general
@@ -553,7 +562,9 @@ igb=5, saltcon=0.100, ifqnt=1, qmcharge_com=0,
 qm_residues="100-105, 200", qm_theory="PM3"
 /
 ```
+
 ### MM/3D-RISM
+
 ```
 Sample input file for MM/3D-RISM
 &general
@@ -563,7 +574,9 @@ startframe=20, endframe=100, interval=5,
 polardecomp=1, thermo="gf"
 /
 ```
+
 ### MMPBSA with membrane proteins
+
 ```
 Sample input file for MMPBSA with membrane proteins
 &general
