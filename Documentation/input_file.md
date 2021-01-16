@@ -31,11 +31,11 @@ However, “stare” and “sta” will match nothing.
 
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
-to the structure<sup>1</sup>. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
-the structure<sup>1</sup> (can generate inconsistencies). If a `*.gro` file was used for complex structure
+to the structure*. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to
+the structure* (can generate inconsistencies). If a `*.gro` file was used for complex structure
 (`-cs` flag) and not reference structure was provided, `gmx_MMPBSA` assume `assign_chainID = 1`. (Default = 0)
 
-_<sup>1</sup> The chain ID is assigned according to two criteria: **terminal amino acids** and **residue numbering**. If
+_* The chain ID is assigned according to two criteria: **terminal amino acids** and **residue numbering**. If
 both criteria or residue numbering changes are present, we assign a new chain ID. If there are terminal amino acids but
 the numbering of the residue continues, we do not change the ID of the chain._
 
