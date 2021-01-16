@@ -409,9 +409,9 @@ These options allow gmx_MMPBSA to do the mutation. This way the user does not ha
 
 `maxcyc` Maximum number of minimization cycles to use per snapshot in sander. (Default = 10000)
 
-`nminterval` ∗ Offset from which to choose frames to perform nmode calculations on (Default = 1)
+`nminterval``∗` Offset from which to choose frames to perform nmode calculations on (Default = 1)
 
-`nmendframe` ∗ Frame number to stop performing nmode calculations on (Default = 1000000)
+`nmendframe``∗` Frame number to stop performing nmode calculations on (Default = 1000000)
 
 `nmode_igb` Value for Generalized Born model to be used in calculations. Options are 0: Vacuum, 1: HCT GB model (Default
 
@@ -423,9 +423,9 @@ is 0 above. (Default = 0.0)
 
 `nmstartframe` ∗ Frame number to begin performing nmode calculations on (Default = 1)
 
-* These variables will choose a subset of the frames chosen from the variables in the &general namelist. Thus, the
+`*` _These variables will choose a subset of the frames chosen from the variables in the &general namelist. Thus, the
   “trajectory” from which snapshots will be chosen for nmode calculations will be the collection of snapshots upon which
-  the other calculations were performed.
+  the other calculations were performed._
 
 ### **`&decomp` namelist variables**
 
