@@ -10,7 +10,7 @@ is going to be performed
 * A *.mol2 file of the unbound ligand used to parametrize ligand for GROMACS.
 
 
-_See a detailed list of all the flags in gmx_MMPBSA command line [here](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA#calling-gmx_mmpbsa-from-the-command-line)_
+_See a detailed list of all the flags in gmx_MMPBSA command line [here](../../Documentation/command-line#calling-gmx_mmpbsa-from-the-command-line)_
 
 That being said, once you are in the folder containing all files, the command-line will be as follows:
 
