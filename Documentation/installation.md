@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 4
 ---
 
 # Installing gmx_MMPBSA
