@@ -18,7 +18,7 @@ approximate vibrational entropies, and &decomp is unique to the decomposition sc
 described below according to their respective namelists. Integers and floating point variables should be typed as-is
 while strings should be put in either single- or double-quotes. All variables should be set with `variable = value` and
 separated by commas. See several
-[examples](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA#sample-input-files) below. As you will see, several
+[examples](../../Documentation/input_file#sample-input-files) below. As you will see, several
 calculations can be performed in the same run (_i.e._ &gb and &pb, &gb and &alanine_scanning, &pb and &decomp, etc).
 Variables will usually be matched to the minimum number of characters required to uniquely identify that variable within
 that namelist. Variables require at least 4 characters to be matched unless that variable name has fewer than 4

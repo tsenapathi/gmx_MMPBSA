@@ -32,8 +32,8 @@ igb=5, saltcon=0.15,
 /
 ```
 
-_See a detailed list of all the options in gmx_MMPBSA input file [here](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA#the-input-file) 
-as well as several [examples](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA#sample-input-files)_
+_See a detailed list of all the options in gmx_MMPBSA input file [here](../../Documentation/input_file#the-input-file) 
+as well as several [examples](../../Documentation/input_file#sample-input-files)_
 
 In this case, a multiple trajectory (MT) approximation is followed, which means the receptor and ligand structures and 
 trajectories are needed. For the complex, a MD Structure+mass(db) file (`com.tpr`), an index file (`index.ndx`),
