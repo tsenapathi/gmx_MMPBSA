@@ -22,7 +22,7 @@ This comparison is based on the documentation of the different programs
 | **Graphical Analyzer** |   | |  | :heavy_check_mark: |
 | Energy to PDB | :heavy_check_mark: |   |  | :heavy_check_mark: |
 | Energetic Terms charts | Per-Frame | Per-Frame | Average (dat file) / Average and Per-Frame (API) <sup>6</sup>  | Average and Per-frame |
-| Energetic Terms charts representation | xmgrace/matplotlib/gnuplot | xmgrace/matplotlib/gnuplot | API and graphics library | gmx_MMPBSA_gui |
+| Energetic Terms charts representation | xmgrace/ matplotlib/ gnuplot | xmgrace/ matplotlib/ gnuplot | API and graphics library | gmx_MMPBSA_gui |
 | **Externals programs** | APBS (1.2.x, 1.3.x or 1.4.x) | APBS (1.x.x) <sup>7</sup> |  AmberTools20 | AmberTools20 |
 | **Parallel computation** | Depends on APBS version | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Steps for:** | | | | |
