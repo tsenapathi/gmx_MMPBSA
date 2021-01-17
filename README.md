@@ -1,4 +1,4 @@
-[<img src="../Images/github.png" height="80" align="right" />](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA)
+[<img src="./Images/github.png" height="80" align="right" />](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA)
 
 # gmx_MMPBSA
 [![pypi](https://img.shields.io/pypi/v/gmx-MMPBSA)](https://pypi.org/project/gmx-MMPBSA/)
