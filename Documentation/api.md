@@ -214,4 +214,4 @@ The available keys are shown in Figure 1 (and each key is described afterwards).
 * `tot` Total free energy contributions (sum of previous 5).
 
 Figure 1: Tree of `dict` keys following the `decomp` key in a `mmpbsa_data` instance.
-![](./doc_files/decomp_dict_keys.png)
+![](../images/decomp_dict_keys.png)
