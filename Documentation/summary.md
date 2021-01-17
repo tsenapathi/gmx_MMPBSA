@@ -33,7 +33,7 @@ cannot be decomposed. APBS energies cannot be decomposed, either. Neither can PB
 This functionality requires sander from the Amber 11 (or later) package.
 * **QM/MMGBSA**. This is a binding free energy (or stability calculation) using the Generalized Born solvent
 model allowing you to treat part of your system with a quantum mechanical Hamiltonian. See [“Advanced
-Options”](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA#Advanced-Options) for tips about optimizing this option. 
+Options”](advanced#Advanced-Options) for tips about optimizing this option. 
 This functionality requires sander from the Amber package.
 * **MM/3D-RISM**. This is a binding free energy (or stability calculation) using the 3D-RISM solvation model.
 This functionality is performed with rism3d.snglpnt built with AmberTools.
