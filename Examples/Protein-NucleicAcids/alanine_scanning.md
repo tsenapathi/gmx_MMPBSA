@@ -86,7 +86,7 @@ On the other hand, if this reference structure is omitted, then it will depend o
     
     {:.bg-red-light}
     This option defines when chain IDs are assigned. For the first and second option it must be assign_chainID = 1 
-  or 2. For the 3rd it must be assign_chainID = 2. See the description here.
+  or 2. For the 3rd it must be assign_chainID = 2. See the description [here](../../Documentation/input_file#general-namelist-variables).
 
 ```warning
 In any of these cases, you must verify that the selection is correct. You can see the structure of the Complex 
