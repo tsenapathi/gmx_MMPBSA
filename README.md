@@ -1,7 +1,6 @@
 [<img src="./Images/github.png" height="80" align="right" />](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA)
 
 # gmx_MMPBSA
-gmx_MMPBSA is a new tool aid to perform end-state free energy calculations based on AMBER's MMPBSA.py with GROMACS files
 [![pypi](https://img.shields.io/pypi/v/gmx-MMPBSA)](https://pypi.org/project/gmx-MMPBSA/)
 [![support](https://img.shields.io/badge/support-JetBrains-brightgreen)](https://www.jetbrains.com/?from=gmx_MMPBSA)
 [![python](https://img.shields.io/badge/python-v3.x-blue)]()
@@ -14,6 +13,8 @@ we will point out what is new or different.
 ```
 
 ## Overview
+gmx_MMPBSA is a new tool aid to perform end-state free energy calculations based on AMBER's MMPBSA.py with GROMACS files
+
 Most of the documentation below is found in the [Amber manual](https://ambermd.org/doc12/Amber20.pdf#chapter.34), 
 we will point out what is new or different. Neither of these should be considered as a “black-box”, and users 
 should be familiar with Amber and MM/PB(GB)SA method before at-tempting these sorts of calculations. These scripts 
