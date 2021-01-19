@@ -18,8 +18,7 @@ gmx_MMPBSA is a new tool aid to perform end-state free energy calculations based
 Most of the documentation below is found in the [Amber manual](https://ambermd.org/doc12/Amber20.pdf#chapter.34), 
 we will point out what is new or different. Neither of these should be considered as a “black-box”, and users 
 should be familiar with Amber and MM/PB(GB)SA method before at-tempting these sorts of calculations. These scripts 
-automate a series of calculations, and cannot trap all the types of errors that might occur. You can review some of the 
-answers to the questions that we consider most common here.
+automate a series of calculations, and cannot trap all the types of errors that might occur. 
 
 ## Contents
 
