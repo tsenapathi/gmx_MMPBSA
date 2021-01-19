@@ -10,7 +10,8 @@ sort: 2
 
 ### Fixes
 * Tutorial 
-### Changes
+
+
 ## [gmx_MMPBSA v1.2.0](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA/releases/tag/v1.2.0)
 ### Additions
 
