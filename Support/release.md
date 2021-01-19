@@ -9,7 +9,7 @@ sort: 2
 * Documentation at Github pages
 
 ### Fixes
-* Tutorial 
+* Alanine scanning tutorial 
 
 
 ## [gmx_MMPBSA v1.2.0](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA/releases/tag/v1.2.0)
