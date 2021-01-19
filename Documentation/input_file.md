@@ -28,16 +28,11 @@ However, “stare” and “sta” will match nothing.
 ```note
 We use the following notation to highlight the changes.
 
-{:.text-green} 
+{:.bg-green-light} 
 - **Input variable added**
 
-{:.text-red} 
-- **Input variable deleted**
-
-
-{:.text-purple} 
+{:.bg-red-light} 
 - **Input variable modified.**
-
  
 This notation allows a clear understanding of the differences for users familiar with MMPBSA.py. It also allows us 
 to highlight the changes we make as we implement new functions.
@@ -46,7 +41,7 @@ to highlight the changes we make as we implement new functions.
 
 ### **`&general` namelist variables**
 
-{:.text-green}
+{:.bg-green-light}
 `assign_chainID` Defines the chains ID assignment mode. _It is ignored when defining a reference structure
 (recommended)_. If `assign_chainID = 1`, gmx_MMPBSA check if the structure has no chains ID and it is assigned according
 to the structure`*`. If `assign_chainID = 2`, `gmx_MMPBSA` re-assign the chains ID, exist or not, according to the
@@ -74,35 +69,35 @@ every trajectory file placed on the command-line. This is always the first frame
 `endframe` The frame from which to stop extracting snapshots from the full, concatenated trajectory comprised of every
 trajectory file supplied on the command-line. (Default = 9999999)
 
-{:.text-purple} 
+{:.bg-red-light} 
 `entropy` It specifies whether to perform a quasi-harmonic entropy (QH) approximation with ptraj or the
 [Interaction Entropy (IE)](https://pubs.acs.org/doi/abs/10.1021/jacs.6b02682) approximation. The allowed values are
 (default = 0):
 
-{:.text-purple}
+{:.bg-red-light}
 * 0: Don’t
   
-{:.text-purple}
+{:.bg-red-light}
 * 1: perform QH
 
-{:.text-purple}
+{:.bg-red-light}
 * 2: perform IE
 
 ```tip
  _Included Interaction entropy aproximation._
  ```
 
-{:.text-green} 
+{:.bg-green-light} 
 `entropy_seg` Specify the representative segment (in %), starting from the `endframe`, for the calculation of the
 Interaction Entropy, _e.g._: `entropy_seg = 25` means that the last quartile of the total number of frames
 (`(endframe-startframe)/interval`) will be used to calculate the average Interaction Entropy. (Default = 25) (Only
 if `entropy = 2`)
 
-{:.text-green} 
+{:.bg-green-light} 
 `entropy_temp` Specify the temperature to calculate the entropy term `−TΔS` (Only if `entropy` = 2). Avoid
 inconsistencies with defined internal temperature (298.15 K) when nmode is used (Default = 298.15)
 
-{:.text-green} 
+{:.bg-green-light} 
 `gmx_path` Define an additional path to search for GROMACS executables. This path takes precedence over the path defined
 in the PATH variable. In these path the following executables will be searched: `gmx`, `gmx_mpi`, `gmx_d`,
 `gmx_mpi_d` (Gromcas > 5.x.x), `make_ndx` and `trjconv` (GROMACS 4.x.x)
@@ -111,14 +106,14 @@ in the PATH variable. In these path the following executables will be searched: 
 every 2nd frame beginning at startframe and ending less than or equal to endframe. (Default = 1)
 
 
-{:.text-red} 
+```danger
 ~~-`keep_files` The variable that specifies which temporary files are kept. All temporary files have the prefix
 `_GMXMMPBSA_` prepended to them (unless you change the prefix on the command-line—see subsection Subsection 34.3.2 for
 details). Allowed values are 0, 1, and 2. 0: Keep no temporary files 1: Keep all generated trajectory files and mdout
 files created by sander simulations 2: Keep all temporary files. Temporary files are only deleted if MMPBSA.py completes
 successfully (Default = 1) A verbose level of 1 is sufficient to use -rewrite-output and recreate the output file
 without rerunning any simulations.~~
-```warning
+
 _All files are needed for plotting_
 ``` 
 
@@ -129,66 +124,66 @@ this option is incompatible with alanine scanning. Default value is 0.
 * 0: Do NOT use temporary NetCDF trajectories
 * 1: Use temporary NetCDF trajectories
 
-{:.text-green} 
+{:.bg-green-light} 
 `PBRadii` PBRadii to build amber topology files (Default = 3):
 
-{:.text-green} 
+{:.bg-green-light} 
 * 1: bondi, recommended when igb = 7
 
-{:.text-green} 
+{:.bg-green-light} 
 * 2: mbondi, recommended when igb = 1
 
-{:.text-green} 
+{:.bg-green-light} 
 * 3: mbondi2, recommended when igb = 2 or 5
 
-{:.text-green} 
+{:.bg-green-light} 
 * 4: mbondi3, recommended when igb = 8
 
-{:.text-green} 
+{:.bg-green-light} 
 `protein_forcefield` Define the force field used to build Amber topology for proteins. Make sure this force field is the
 same as the one used in GROMACS (Default = "oldff/leaprc.ff99SB")
 Force fields tested:
 
-{:.text-green} 
+{:.bg-green-light} 
 * "oldff/leaprc.ff99"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "oldff/leaprc.ff03"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "oldff/leaprc.ff99SB"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "oldff/leaprc.ff99SBildn"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "leaprc.protein.ff14SB"
 
 ```tip
 _This notation format is the one used in tleap._
 ```
 
-{:.text-green} 
+{:.bg-green-light} 
 `ligand_forcefield` Define the force field used to build Amber topology for small molecules or glycams. Make sure this
 force field is the same as the one used for GROMACS (Default = "leaprc.gaff"). Force fields tested:
 
 
-{:.text-green} 
+{:.bg-green-light} 
 * "leaprc.gaff"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "leaprc.gaff2"
 
-{:.text-green} 
+{:.bg-green-light} 
 * "leaprc.GLYCAM_06j-1"    (Compatible with amber12SB and later)
 
-{:.text-green} 
+{:.bg-green-light} 
 * "leaprc.GLYCAM_06EPb"    (Compatible with amber12SB and later)
 
-{:.text-green} 
+{:.bg-green-light} 
 * "gmxMMPBSA/leaprc.GLYCAM_06h-1"    `*`(Included in gmx_MMPBSA package. Compatible with amber99SB and earlier)
 
-{:.text-green} 
+{:.bg-green-light} 
 * "gmxMMPBSA/leaprc.zaa99SB"    `*`Parameters for Zwitterionic amino acids. (Included in gmx_MMPBSA package. Compatible
   with amber 99SB)
 
@@ -199,52 +194,52 @@ $AMBERHOME/dat/leap/[cmd, prep, lib, parm]/gmxMMPBSA). This way, we keep gmx_MMP
 _This notation format is the one used in tleap._
 ```
 
-{:.text-green} 
+{:.bg-green-light} 
 `ions_parameters` Define ions parameters to build the Amber topology. (Default = 1)
 
-{:.text-green} 
+{:.bg-green-light} 
 * 1: frcmod.ions234lm_126_tip3p
 
-{:.text-green} 
+{:.bg-green-light} 
 * 2: frcmod.ions234lm_iod_tip4pew
 
-{:.text-green} 
+{:.bg-green-light} 
 * 3: frcmod.ions234lm_iod_spce
 
-{:.text-green} 
+{:.bg-green-light} 
 * 4: frcmod.ions234lm_hfe_spce
 
-{:.text-green} 
+{:.bg-green-light} 
 * 5: frcmod.ions234lm_126_tip4pew
 
-{:.text-green} 
+{:.bg-green-light} 
 * 6: frcmod.ions234lm_126_spce
 
-{:.text-green} 
+{:.bg-green-light} 
 * 7: frcmod.ions234lm_1264_tip4pew
 
-{:.text-green} 
+{:.bg-green-light} 
 * 8: frcmod.ions234lm_1264_tip3p
 
-{:.text-green} 
+{:.bg-green-light} 
 * 9: frcmod.ions234lm_1264_spce
 
-{:.text-green} 
+{:.bg-green-light} 
 * 10: frcmod.ions234lm_iod_tip3p
 
-{:.text-green} 
+{:.bg-green-light} 
 * 11: frcmod.ions234lm_hfe_tip4pew
 
-{:.text-green} 
+{:.bg-green-light} 
 * 12: frcmod.ions234lm_hfe_tip3p
 
-{:.text-green} 
+{:.bg-green-light} 
 `reuse_files` Define whether the trajectories files will be reused when the program ends in error. (Default = 0)
 
-{:.text-green} 
+{:.bg-green-light} 
 * 0: Don't reuse. If there are temporary trajectory files, they will be deleted
 
-{:.text-green} 
+{:.bg-green-light} 
 * 1: Reuse existing trajectory file
 
 ```warning
@@ -252,21 +247,21 @@ Note that the trajectories files may not be generated correctly due to internal 
 it with care.
 ```
 
-{:.text-green} 
+{:.bg-green-light} 
 `solvated_trajectory` Define if it is necessary to build a clean trajectory with no water and ions (Default = 1)
 
-{:.text-green} 
+{:.bg-green-light} 
 * 0: Don’t
 
-{:.text-green} 
+{:.bg-green-light} 
 * 1: Build clean trajectory
 
-{:.text-red} 
+```danger
 ~~-`search_path` Advanced option. By default, MMPBSA.py will only search for executables in $AMBERHOME/bin . To enable
 it to search for binaries in your full PATH if they can’t be found in $AMBERHOME/bin , set search_path to 1. Default 0 (
 do not search through the PATH ). This is particularly useful if you are using an older version of sander that is not in
 AMBERHOME .~~
-```warning
+
 _Always must be defined to get GROMACS_
 ```
 
@@ -295,7 +290,7 @@ available with both mmpbsa_py_energy and sander.(Default = 0)
 ignored. All residues treated with quantum mechanics in the complex must be treated with quantum mechanics in the
 receptor or ligand to obtain meaningful results.
 
-{:.text-green} 
+{:.bg-green-light} 
 `intdiel` Define Internal dielectric constant without use external *.mdin file (Default = 1.0)
 
 `qm_theory` Which semi-empirical Hamiltonian should be used for the quantum calculation. No default, this must be
@@ -388,11 +383,11 @@ Note that all calculation details are controlled in the other namelists, though 
 the namelist must be included (blank if desired)
 
 
-{:.text-green} 
+{:.bg-green-light} 
 `mutant` Define whether the mutation will be perform in receptor or ligand. Allowed values are: receptor, rec, ligand or
 lig in any capitalization (Default = receptor or REC)
 
-{:.text-green}
+{:.bg-green-light}
 `mutant_res` Define the specific residue that is going to be mutated. Use the following format CHAIN:RESNUM (eg: 'A:
 350'). Please, make sure that your selection is correct and based on GROMACS numbering in processed files.
 
@@ -473,7 +468,7 @@ of memory to parse the mdout files and write decomposition output file (~500 MB 
 62500 pairs!) It is not unusual for the output file to take a significant amount of time to print if you have a lot of
 data. This is most applicable to pairwise decomp, since the amount of data scales as O(N 2 ).
 
-{:.text-green} 
+{:.bg-green-light} 
 Based on the above, we decided to add a new option that limits the selection of the residues that will be printed by 
 default. The new option (within 6) considerably reduces the number of residues to be printed reducing the 
 computational cost. Additionally, it selects the interaction interface residues (according to the selected value) 
