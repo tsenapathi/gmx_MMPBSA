@@ -1,6 +1,7 @@
 [<img src="./Images/github.png" height="80" align="right" />](https://github.com/Valdes-Tresanco-MS/gmx_MMPBSA)
 
 # gmx_MMPBSA
+gmx_MMPBSA is a new tool aid to perform end-state free energy calculations based on AMBER's MMPBSA.py with GROMACS files
 [![pypi](https://img.shields.io/pypi/v/gmx-MMPBSA)](https://pypi.org/project/gmx-MMPBSA/)
 [![support](https://img.shields.io/badge/support-JetBrains-brightgreen)](https://www.jetbrains.com/?from=gmx_MMPBSA)
 [![python](https://img.shields.io/badge/python-v3.x-blue)]()

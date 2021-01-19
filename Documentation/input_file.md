@@ -349,7 +349,7 @@ Angstroms necessary to select the residues from both the receptor and the ligand
 print_res = “1; 3-10; 15; 100”. Both of these will print residues 1, 3 through 10, 15, and 100 from the complex topology
 file and the corresponding residues in either the ligand and/or receptor topology files.
 
-```Note
+```note
 {:.text-red} 
 Using idecomp=3 or 4 (pairwise) with a very large number of printed residues and a large number of 
 frames can quickly create very, very large temporary mdout files. Large print selections also demand a large amount 
